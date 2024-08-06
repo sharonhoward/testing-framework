@@ -17,8 +17,12 @@ jobs:
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
           packages: |
-            any::tidyverse 
-            any::knitr 
+            any::dplyr 
+
+      - name: Install dependencies
+        run: |
+          install.packages(c("remotes","testthat"),dependencies=TRUE)
+          remotes::install_github("aourednik/SPARQLchunks")
 # end of r additions
             
       - name: Checkout
