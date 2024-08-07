@@ -23,6 +23,17 @@ jobs:
             any::dplyr
             any::readr
             any::tidyr
+            any::readr
+            any::stringr
+            any::purrr
+            any::jsonlite
+            any::janitor
+            any::glue
+            any::tidytext
+            any::lubridate
+            any::httr
+            any::curl
+            
 #          extra-packages: any::rcmdcheck
 #          needs: check
 
