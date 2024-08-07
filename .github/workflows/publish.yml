@@ -21,6 +21,17 @@ jobs:
           extra-packages: any::rcmdcheck
           needs: check
 
+      - name: Install remotes
+        run: |
+          Rscript -e "install.packages('remotes', repos='https://ftp.belnet.be/mirror/CRAN')"
+
+      - name: Install package from Github
+        run: |
+          Rscript -e "remotes::install_github('aourednik/SPARQLchunks')"
+
+      - uses: r-lib/actions/check-r-package@v2
+
+
 #      - name: Install dependencies
 #        run: |
 #          install.packages(c("remotes","testthat"),dependencies=TRUE)
