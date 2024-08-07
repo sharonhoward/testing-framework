@@ -18,11 +18,13 @@ jobs:
         with:
           packages: |
             any::dplyr 
+          extra-packages: any::rcmdcheck
+          needs: check
 
-      - name: Install dependencies
-        run: |
-          install.packages(c("remotes","testthat"),dependencies=TRUE)
-          remotes::install_github("aourednik/SPARQLchunks")
+#      - name: Install dependencies
+#        run: |
+#          install.packages(c("remotes","testthat"),dependencies=TRUE)
+#          remotes::install_github("aourednik/SPARQLchunks")
 # end of r additions
             
       - name: Checkout
