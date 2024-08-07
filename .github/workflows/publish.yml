@@ -10,36 +10,38 @@ jobs:
     concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
     runs-on: ubuntu-latest
     steps:
-      - name: Set up R  # adding to original script
+      - name: Checkout
+        uses: actions/checkout@v4
+# adding R to original OF script        
+      - name: Set up R  
         uses: r-lib/actions/setup-r@v2
 
       - name: Install packages
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
           packages: |
-            any::dplyr 
-          extra-packages: any::rcmdcheck
-          needs: check
+            any::dplyr
+            any::readr
+            any::tidyr
+#          extra-packages: any::rcmdcheck
+#          needs: check
 
-      - name: Install remotes
-        run: |
-          Rscript -e "install.packages('remotes', repos='https://ftp.belnet.be/mirror/CRAN')"
+#      - name: Install remotes
+#        run: |
+#          Rscript -e "install.packages('remotes', repos='https://ftp.belnet.be/mirror/CRAN')"
 
-      - name: Install package from Github
-        run: |
-          Rscript -e "remotes::install_github('aourednik/SPARQLchunks')"
+#      - name: Install package from Github
+#        run: |
+#          Rscript -e "remotes::install_github('aourednik/SPARQLchunks')"
 
-      - uses: r-lib/actions/check-r-package@v2
+#      - uses: r-lib/actions/check-r-package@v2
 
 
 #      - name: Install dependencies
 #        run: |
 #          install.packages(c("remotes","testthat"),dependencies=TRUE)
 #          remotes::install_github("aourednik/SPARQLchunks")
-# end of r additions
-            
-      - name: Checkout
-        uses: actions/checkout@v4
+# end of r additions            
 
       - name: Setup node
         uses: actions/setup-node@v4
